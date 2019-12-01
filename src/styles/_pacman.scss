@@ -1,0 +1,18 @@
+.pacman {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  border: $radius solid orange;
+  &--north {
+    border-top: $radius solid white;
+  }
+  &--south {
+    border-bottom: $radius solid white;
+  }
+  &--east {
+    border-right: $radius solid white;
+  }
+  &--west {
+    border-left: $radius solid white;
+  }
+}

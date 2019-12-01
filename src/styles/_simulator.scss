@@ -1,0 +1,7 @@
+.simulator {
+  display: flex;
+  margin: 20px 30px;
+  &>:nth-child(n) {
+    flex: 1;
+  }
+}
