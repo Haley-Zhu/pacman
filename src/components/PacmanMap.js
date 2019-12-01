@@ -5,23 +5,12 @@ class PacmanMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      girdList: [],
       isShowPacman: false
     };
   }
 
-  componentDidMount() {
-    const { gridNumber } = this.props;
-    let newGridList = [];
-    newGridList.length = gridNumber * gridNumber;
-    newGridList.fill("");
-    this.setState({
-      girdList: newGridList
-    });
-  }
-
   isPacmanPosition = index => {
-    const { gridNumber, position} = this.props;
+    const { gridNumber, position } = this.props;
     const pacmanIndex = position.y * gridNumber + position.x;
 
     return index === pacmanIndex;
@@ -29,19 +18,26 @@ class PacmanMap extends React.Component {
 
   render() {
     const { direction, gridNumber } = this.props;
-    const { girdList } = this.state;
+    let girdList = [];
+    girdList.length = gridNumber * gridNumber;
+    girdList.fill("");
 
     return (
-      <div className="pacman-map">
-        {girdList.map((grid, index) => (
-          <div key={index} className="pacman-map__cell">
-            {`(${index % gridNumber}, ${parseInt(index / gridNumber)})`}
-            {this.isPacmanPosition(index) ? (
-              <Pacman direction={direction} />
-            ) : null}
-          </div>
-        ))}
-      </div>
+      <React.Fragment>
+        <div>
+          <p>Grid Number: {gridNumber}</p>
+        </div>
+        <div className="pacman-map">
+          {girdList.map((grid, index) => (
+            <div key={index} className="pacman-map__cell">
+              {`(${index % gridNumber}, ${parseInt(index / gridNumber)})`}
+              {this.isPacmanPosition(index) ? (
+                <Pacman direction={direction} />
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </React.Fragment>
     );
   }
 }

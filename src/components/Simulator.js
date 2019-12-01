@@ -27,23 +27,26 @@ class Simulator extends React.Component {
     });
   };
 
+  handleClick = () => {
+    this.setState(initialState);
+  };
+
   onInputSubmit = e => {
     e.preventDefault();
     const { inputCommand, position, isReport } = this.state;
-    // reset message state and 
+    // reset message state and
     this.setState({
-      message: "",
-      inputCommand: ""
+      message: ""
     });
 
-    console.log('-------------', inputCommand);
     if (isReport) {
       this.setState({
-        message: "Please click clear button to start a new test!"
+        message: "Please click RESET button to start a new test!"
       });
       return;
     }
 
+    // eslint-disable-next-line
     let commands = inputCommand.toUpperCase().split(/\s|\,/);
 
     if (!this.availablePosition(position) && commands[0] !== "PLACE") {
@@ -93,15 +96,22 @@ class Simulator extends React.Component {
   };
 
   placePacman = ([x, y, face]) => {
-    console.log('!!!!!!!!!!!!', x, y, face);
     const { gridNumber } = this.state;
-    x = x-0;
-    y = y-0;
+    x = x - 0;
+    y = y - 0;
     if (!this.availablePosition({ x, y })) {
       // ErrorMsg: invalid place
       this.setState({
         message: `Invalid Position, Please place position X and Y in 0 ~ ${gridNumber -
           1}`
+      });
+      return;
+    }
+
+    if (this.getIndexFromArray(face, directions) === -1) {
+      // ErrorMsg: invalid direction
+      this.setState({
+        message: `Invalid Direction, Please use NORTH, EAST, SOUTH, WEST`
       });
       return;
     }
@@ -119,7 +129,6 @@ class Simulator extends React.Component {
       gridNumber
     } = this.state;
 
-    console.log('@@@@@MOVE@@@@@@@@', x, y, direction);
     let moveX = 0;
     let moveY = 0;
     switch (direction) {
@@ -141,7 +150,6 @@ class Simulator extends React.Component {
     const newX = x + moveX;
     const newY = y + moveY;
 
-    console.log('@@@@@MOVE 2@@@@@@@@', newX, newY, direction);
     const newPosition = { x: newX, y: newY };
     if (!this.availablePosition(newPosition)) {
       // ErrorMsg: invalid move
@@ -152,7 +160,6 @@ class Simulator extends React.Component {
       return;
     }
 
-    console.log('@@@@@MOVE 3@@@@@@@@', newPosition);
     this.setState({
       position: newPosition
     });
@@ -182,32 +189,42 @@ class Simulator extends React.Component {
   };
 
   render() {
-    const { gridNumber, direction, position, isReport, message } = this.state;
-
-    console.log('@@@@@@@@@@@@@', position, direction);
+    const {
+      gridNumber,
+      direction,
+      position,
+      isReport,
+      message,
+      inputCommand
+    } = this.state;
 
     return (
-      <div className="simulator">
-        <div className="control">
-          <InputArea
-            handleChange={this.handleChange}
-            onInputSubmit={this.onInputSubmit}
-          />
-          {!!message ? <p>Message: {message}</p> : null}
-          {isReport ? (
-            <p>
-              Output: {position.x},{position.y},{direction}
-            </p>
-          ) : null}
+      <React.Fragment>
+        <h1 className="simulator__title">Pacman</h1>
+        <div className="simulator__content">
+          <div className="simulator__control">
+            <InputArea
+              handleChange={this.handleChange}
+              onInputSubmit={this.onInputSubmit}
+              inputCommand={inputCommand}
+            />
+            <button onClick={() => this.handleClick()}>RESET</button>
+            {!!message ? <p>Message: {message}</p> : null}
+            {isReport ? (
+              <p>
+                Output: {position.x},{position.y},{direction}
+              </p>
+            ) : null}
+          </div>
+          <div className="simulator__map">
+            <PacmanMap
+              gridNumber={gridNumber}
+              direction={direction}
+              position={position}
+            />
+          </div>
         </div>
-        <div>
-          <PacmanMap
-            gridNumber={gridNumber}
-            direction={direction}
-            position={position}
-          />
-        </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

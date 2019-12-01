@@ -1,6 +1,7 @@
 .pacman {
   width: 0;
   height: 0;
+  margin: 0 auto;
   border-radius: 50%;
   border: $radius solid orange;
   &--north {

@@ -1,11 +1,13 @@
 .pacman-map {
   display: flex;
-  width: 15 * $radius;
+  width: 3 * 5 * $radius;
   flex-flow: row wrap-reverse;
   &__cell {
     width: 3 * $radius;
     height: 3 * $radius;
     border: 1px solid lightseagreen;
     box-sizing: border-box;
+    font-size: small;
+    margin: 0 auto;
   }
 }

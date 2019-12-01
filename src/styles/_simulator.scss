@@ -1,7 +1,18 @@
 .simulator {
-  display: flex;
-  margin: 20px 30px;
-  &>:nth-child(n) {
-    flex: 1;
+  &__title {
+    text-align: center;
+  }
+  &__content {
+    display: flex;
+    margin: 20px 30px;
+    & > :nth-child(n) {
+      flex: 1;
+    }
+  }
+  &__control {
+    margin: 50px;
+    button {
+      margin: 20px 0;
+    }
   }
 }
