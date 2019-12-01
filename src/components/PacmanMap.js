@@ -24,9 +24,7 @@ class PacmanMap extends React.Component {
 
     return (
       <React.Fragment>
-        <div>
-          <p>Grid Number: {gridNumber}</p>
-        </div>
+        <p>Grid Number: {gridNumber}</p>
         <div className="pacman-map">
           {girdList.map((grid, index) => (
             <div key={index} className="pacman-map__cell">

@@ -3,6 +3,12 @@ import InputArea from "./InputArea";
 import PacmanMap from "./PacmanMap";
 
 const directions = ["NORTH", "EAST", "SOUTH", "WEST"];
+const directionMove = {
+  NORTH: { moveX: 0, moveY: 1 },
+  EAST: { moveX: 1, moveY: 0 },
+  SOUTH: { moveX: 0, moveY: -1 },
+  WEST: { moveX: -1, moveY: 0 }
+};
 const initialState = {
   isReport: false,
   gridNumber: 5,
@@ -129,26 +135,8 @@ class Simulator extends React.Component {
       gridNumber
     } = this.state;
 
-    let moveX = 0;
-    let moveY = 0;
-    switch (direction) {
-      case "NORTH":
-        moveY += 1;
-        break;
-      case "SOUTH":
-        moveY -= 1;
-        break;
-      case "WEST":
-        moveX -= 1;
-        break;
-      case "EAST":
-        moveX += 1;
-        break;
-      default:
-        break;
-    }
-    const newX = x + moveX;
-    const newY = y + moveY;
+    const newX = x + directionMove[direction].moveX;
+    const newY = y + directionMove[direction].moveY;
 
     const newPosition = { x: newX, y: newY };
     if (!this.availablePosition(newPosition)) {
