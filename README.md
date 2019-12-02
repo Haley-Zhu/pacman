@@ -6,6 +6,43 @@ The Pacman CodeTest requests and details see [ie/Code-Challenge-1](https://githu
 
 
 
+### `See The Pacman Online`
+
+Open https://pacmanh.netlify.com/  to see this application online.
+
+
+
+### `Play It`
+
+1. Enter single command in input area, then press 'Enter' to submit the command
+
+2. If the command is not valid, there will be Error Message
+
+3. Use commands below to control the pacman
+
+   - PLACE x,y,face    // To place pacman
+     - valid x from 0 to 4
+     - valid y from 0 to 4
+     - valid face is ['NORTH', 'EAST', 'SOUTH', 'WEST']
+   - MOVE  // To move pacman 1 grid toward the direction
+   - LEFT  // To rotate direction 
+   - RIGHT //
+   - REPORT   // To output the position
+
+   Notice: the command is Case-insensitive, you can also use 'move', 'left', etc; but they are strict format, command such as 'place 2,   3   , north' is invalid.
+
+4. Once submit 'REPORT' command, the test is over; Please click 'RESET' button to start a new one.
+
+
+
+### `Test Data`
+
+There are provided test data [here](https://github.com/Haley-Zhu/pacman/blob/master/testdata.txt)
+
+You can use them to play it.
+
+
+
 ### `Code Structure`
 
 ```js
@@ -63,8 +100,6 @@ Launches the test runner in the interactive watch mode.<br />
 
 
 
-### `See The Pacman Online`
 
-Open https://pacmanh.netlify.com/  to see this application online.
 
 
