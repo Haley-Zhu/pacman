@@ -1,0 +1,72 @@
+Success:
+a)
+PLACE 0,0,NORTH
+
+MOVE
+
+REPORT
+
+Expect Output: 0,1,NORTH
+
+b)
+
+PLACE 0,0,NORTH
+
+LEFT
+
+REPORT
+
+Expect Output: 0,0,WEST
+
+c)
+
+PLACE 1,2,EAST
+
+MOVE
+
+MOVE
+
+LEFT
+
+MOVE
+
+REPORT
+
+Expect Output: 3,3,NORTH
+
+d)
+PLACE 1,2,WEST
+
+MOVE
+
+MOVE          // Message: Invalid move, Please move position X and Y in 0 ~ 4
+
+LEFT
+
+REPORT
+
+Expect Output: 0,2,SOUTH
+
+e)
+MOVE         // Message: Please enter place command FIRST!
+
+PLACE 1,2,WEST
+
+RIGHT
+
+PLACE 2,3,SOUTH
+
+REPORT
+
+Expect Output: 2,3,SOUTH
+
+f)
+PLACE 5,5,WEST    // Message: Invalid Position, Please place position X and Y in 0 ~ 4
+
+PLACE 1,2,WEST
+
+test command      // Message: Invalid Command!
+
+REPORT
+
+Expect Output: 1,2,WEST
