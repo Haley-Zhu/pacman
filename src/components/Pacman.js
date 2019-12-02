@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const Pacman = (props) => {
-  const { direction } = props;
-
-  return (
-    <div className={`pacman pacman--${direction.toLowerCase()}`}></div>
-  )
-}
+const Pacman = ({ direction }) => {
+  return <div className={`pacman pacman--${direction.toLowerCase()}`}></div>;
+};
 
 export default Pacman;

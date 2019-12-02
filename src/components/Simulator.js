@@ -187,7 +187,7 @@ class Simulator extends React.Component {
     } = this.state;
 
     return (
-      <React.Fragment>
+      <div>
         <h1 className="simulator__title">Pacman</h1>
         <div className="simulator__content">
           <div className="simulator__control">
@@ -212,7 +212,7 @@ class Simulator extends React.Component {
             />
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

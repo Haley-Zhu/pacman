@@ -1,12 +1,12 @@
 import React from "react";
 
-const InputArea = props => {
+const InputArea = ({ onInputSubmit, handleChange, inputCommand }) => {
   return (
-    <form className="input-area" onSubmit={e => props.onInputSubmit(e)}>
+    <form className="input-area" onSubmit={e => onInputSubmit(e)}>
       <input
         placeholder="Please enter command"
-        onChange={e => props.handleChange(e.target.value)}
-        value={props.inputCommand}
+        onChange={e => handleChange(e.target.value)}
+        value={inputCommand}
       />
     </form>
   );
