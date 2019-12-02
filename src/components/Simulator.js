@@ -27,16 +27,19 @@ class Simulator extends React.Component {
     this.state = initialState;
   }
 
+  // set input value when onChange
   handleChange = value => {
     this.setState({
       inputCommand: value
     });
   };
 
+  // reset initialState when click RESET Button
   handleClick = () => {
     this.setState(initialState);
   };
 
+  // press 'enter' on keyboard
   onInputSubmit = e => {
     e.preventDefault();
     const { inputCommand, position, isReport } = this.state;
@@ -89,6 +92,7 @@ class Simulator extends React.Component {
     return arr.indexOf(value);
   };
 
+  // check is position in map
   availablePosition = position => {
     const { gridNumber } = this.state;
     if (position.x < 0 || position.x >= gridNumber) {
@@ -101,6 +105,7 @@ class Simulator extends React.Component {
     return true;
   };
 
+  // place command
   placePacman = ([x, y, face]) => {
     const { gridNumber } = this.state;
     x = x - 0;
@@ -128,6 +133,7 @@ class Simulator extends React.Component {
     });
   };
 
+  // move command
   movePacman = () => {
     const {
       direction,
@@ -153,6 +159,7 @@ class Simulator extends React.Component {
     });
   };
 
+  // left command or right command
   rotatePacman = rotate => {
     const { direction } = this.state;
     const index = this.getIndexFromArray(direction, directions);
@@ -170,6 +177,7 @@ class Simulator extends React.Component {
     });
   };
 
+  // report command
   report = () => {
     this.setState({
       isReport: true
@@ -197,9 +205,11 @@ class Simulator extends React.Component {
               inputCommand={inputCommand}
             />
             <button onClick={() => this.handleClick()}>RESET</button>
-            {!!message ? <p>Message: {message}</p> : null}
+            {!!message ? (
+              <p className="simulator__message">Message: {message}</p>
+            ) : null}
             {isReport ? (
-              <p>
+              <p className="simulator__output">
                 Output: {position.x},{position.y},{direction}
               </p>
             ) : null}

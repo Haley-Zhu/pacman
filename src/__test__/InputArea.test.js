@@ -19,27 +19,27 @@ describe("InputArea", () => {
   const mock_onInputSubmit = jest.fn();
 
   const { props, wrapper } = setup({
-    handleChange: (mock_handleChange),
-    onInputSubmit: (mock_onInputSubmit),
+    handleChange: mock_handleChange,
+    onInputSubmit: mock_onInputSubmit,
     inputCommand: "test command"
   });
   it("InputArea renders correctly", () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
   it("InputArea When inputvalue is passed", () => {
-    const input = wrapper.find('input');
+    const input = wrapper.find("input");
     expect(input.props().value).toBe(`${props.inputCommand}`);
-  })
+  });
   it("InputArea onChange called correctly", () => {
-    const input = wrapper.find('input');
+    const input = wrapper.find("input");
     const value = props.inputCommand;
-    input.simulate('change', { target: { value }});
+    input.simulate("change", { target: { value } });
     expect(mock_handleChange).toBeCalled();
     expect(mock_handleChange).toBeCalledWith(value);
-  })
+  });
   it("InputArea onSubmit called correctly", () => {
-    const form = wrapper.find('form');
-    form.simulate('submit');
+    const form = wrapper.find("form");
+    form.simulate("submit");
     expect(mock_onInputSubmit).toBeCalled();
-  })
+  });
 });

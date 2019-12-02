@@ -27,13 +27,13 @@ describe("PacmanMap", () => {
     const testIndex = props.position.y * props.gridNumber + props.position.x;
     expect(wrapper.instance().isPacmanPosition(testIndex)).toBe(true);
     expect(wrapper.instance().isPacmanPosition(testIndex + 1)).toBe(false);
-  })
+  });
   it(`PacmanMap's number is same to ${props.gridNumber} *${props.gridNumber}`, () => {
-    const grids = wrapper.find('.pacman-map__cell');
+    const grids = wrapper.find(".pacman-map__cell");
     expect(grids.length).toBe(25);
-  })
+  });
   it("PacmanMap description correctly", () => {
-    const description = wrapper.find('p').text();
+    const description = wrapper.find("p").text();
     expect(description).toBe(`Grid Number: ${props.gridNumber}`);
-  })
+  });
 });

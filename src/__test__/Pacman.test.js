@@ -16,12 +16,12 @@ const setup = ({ ...props }) => {
 
 describe("Pacman", () => {
   const { wrapper } = setup({
-    direction: "NORTH",
+    direction: "NORTH"
   });
   it("Pacman renders correctly", () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
   it("Pacman render direction correctly", () => {
-    expect(wrapper.find('div').hasClass('pacman pacman--north')).toBe(true);
-  })
+    expect(wrapper.find("div").hasClass("pacman pacman--north")).toBe(true);
+  });
 });
