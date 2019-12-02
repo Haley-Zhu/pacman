@@ -18,16 +18,16 @@ Open https://pacmanh.netlify.com/  to see this application online.
 
 2. If the command is not valid, there will be Error Message
 
-3. Use commands below to control the pacman
+3. Use commands below to control the Pacman 
 
-   - PLACE x,y,face    // To place pacman
+   - PLACE x,y,face    // To place Pacman 
      - valid x from 0 to 4
      - valid y from 0 to 4
      - valid face is ['NORTH', 'EAST', 'SOUTH', 'WEST']
-   - MOVE  // To move pacman 1 grid toward the direction
-   - LEFT  // To rotate direction 
-   - RIGHT //
-   - REPORT   // To output the position
+   - MOVE                 // To move Pacman 1 grid toward the direction
+   - LEFT                   // To rotate Pacman 90 degrees in the direction 
+   - RIGHT                // To rotate Pacman 90 degrees in the direction 
+   - REPORT             // To output the position
 
    Notice: the command is Case-insensitive, you can also use 'move', 'left', etc; but they are strict format, command such as 'place 2,   3   , north' is invalid.
 
