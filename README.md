@@ -1,4 +1,4 @@
-## Available Scripts
+## Pacman
 
 ### `Pacman CodeTest`
 
