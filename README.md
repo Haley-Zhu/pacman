@@ -56,14 +56,14 @@ You can use them to play it.
     |   |-- index.html
     |   |-- manifest.json
     |-- src
-        |-- App.js						  // App file
+        |-- App.js                        // App file
         |-- App.test.js
         |-- index.js                      // entry file
         |-- components
-        |   |-- InputArea.js			  // Enter command
-        |   |-- Pacman.js				  // describe the pacman icon
-        |   |-- PacmanMap.js			  // describe the map
-        |   |-- Simulator.js			  // the Pacman simulator root file
+        |   |-- InputArea.js              // Enter command
+        |   |-- Pacman.js                 // describe the pacman icon
+        |   |-- PacmanMap.js              // describe the map
+        |   |-- Simulator.js              // the Pacman simulator root file
         |-- styles
         |   |-- style.scss
         |   |-- _input-area.scss
