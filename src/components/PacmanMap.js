@@ -2,13 +2,6 @@ import React from "react";
 import Pacman from "./Pacman";
 
 class PacmanMap extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isShowPacman: false
-    };
-  }
-
   isPacmanPosition = index => {
     const { gridNumber, position } = this.props;
     const pacmanIndex = position.y * gridNumber + position.x;
@@ -23,7 +16,7 @@ class PacmanMap extends React.Component {
     girdList.fill("");
 
     return (
-      <React.Fragment>
+      <div>
         <p>Grid Number: {gridNumber}</p>
         <div className="pacman-map">
           {girdList.map((grid, index) => (
@@ -35,7 +28,7 @@ class PacmanMap extends React.Component {
             </div>
           ))}
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
