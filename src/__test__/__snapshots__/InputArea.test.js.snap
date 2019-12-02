@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputArea InputArea renders correctly 1`] = `
+<form
+  className="input-area"
+  onSubmit={[Function]}
+>
+  <input
+    onChange={[Function]}
+    placeholder="Please enter command"
+    value="test command"
+  />
+</form>
+`;
