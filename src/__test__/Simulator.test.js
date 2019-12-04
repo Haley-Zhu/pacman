@@ -129,22 +129,23 @@ describe("simulator", () => {
     });
 
     describe("onInputSubmit", () => {
+      const gridNumber = wrapper.state("gridNumber");
       const spyFunction = jest.spyOn(instance, "onInputSubmit");
       const event = { preventDefault: function() {} };
       const stateCase1 = { isReport: true };
       const stateCase2 = {
         isReport: false,
-        position: { x: 7, y: 2 },
+        position: { x: gridNumber, y: 2 },
         inputCommand: "MOVE"
       };
       const stateCase3 = {
         isReport: false,
-        position: { x: 7, y: 2 },
+        position: { x: gridNumber, y: 2 },
         inputCommand: "Place 2,3,North,sss"
       };
       const stateCase4 = {
         isReport: false,
-        position: { x: 7, y: 2 },
+        position: { x: gridNumber, y: 2 },
         inputCommand: "Place 2,3,North"
       };
       const stateCase5 = {
@@ -247,11 +248,12 @@ describe("simulator", () => {
       expect(spyFunction(value, arr)).toBe(1);
     });
     describe("availablePosition", () => {
+      const gridNumber = wrapper.state("gridNumber");
       const spyFunction = jest.spyOn(instance, "availablePosition");
       const position1 = { x: -2, y: 2 };
-      const position2 = { x: 7, y: 2 };
+      const position2 = { x: gridNumber + 1, y: 2 };
       const position3 = { x: 2, y: -2 };
-      const position4 = { x: 4, y: 8 };
+      const position4 = { x: 4, y: gridNumber + 1 };
       const position5 = { x: 3, y: 2 };
 
       it("availablePosition position1", () => {
@@ -287,10 +289,11 @@ describe("simulator", () => {
       const case2 = [3, 3, "test"];
       const case3 = [3, 3, "EAST"];
       it("placePacman case1", () => {
+        const gridNumber = wrapper.state("gridNumber");
         instance.placePacman(case1);
         expect(spyFunction).toHaveBeenCalled();
         expect(wrapper.state("message")).toBe(
-          "Invalid Position, Please place position X and Y in 0 ~ 4"
+          `Invalid Position, Please place position X and Y in 0 ~ ${gridNumber - 1}`
         );
       });
       it("placePacman case2", () => {
@@ -313,11 +316,12 @@ describe("simulator", () => {
       const stateCase1 = { direction: "WEST", position: { x: 0, y: 4 } };
       const stateCase2 = { direction: "WEST", position: { x: 1, y: 4 } };
       it("movePacman stateCase1", () => {
+        const gridNumber = wrapper.state("gridNumber");
         wrapper.setState(stateCase1);
         instance.movePacman();
         expect(spyFunction).toHaveBeenCalled();
         expect(wrapper.state("message")).toBe(
-          "Invalid move, Please move position X and Y in 0 ~ 4"
+          `Invalid move, Please move position X and Y in 0 ~ ${gridNumber - 1}`
         );
       });
       it("movePacman stateCase2", () => {

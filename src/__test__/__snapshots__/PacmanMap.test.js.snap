@@ -8,6 +8,11 @@ exports[`PacmanMap PacmanMap renders correctly 1`] = `
   </p>
   <div
     className="pacman-map"
+    style={
+      Object {
+        "width": "300px",
+      }
+    }
   >
     <div
       className="pacman-map__cell"

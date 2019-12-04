@@ -18,7 +18,7 @@ class PacmanMap extends React.Component {
     return (
       <div>
         <p>Grid Number: {gridNumber}</p>
-        <div className="pacman-map">
+        <div style={{width: 60 * gridNumber + 'px'}} className="pacman-map">
           {girdList.map((grid, index) => (
             <div key={index} className="pacman-map__cell">
               {`(${index % gridNumber}, ${parseInt(index / gridNumber)})`}
